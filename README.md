@@ -47,6 +47,7 @@
 | address       | string     | null: false       |
 | building_name | string     |                   |
 | tell          | string     | null: false       |
+| buy_id        | references | foreign_key: true |
 
 ### Association
 
