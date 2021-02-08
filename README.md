@@ -27,7 +27,7 @@
 | state_id        | integer    | null: false       |
 | fee_id          | integer    | null: false       |
 | from_id         | integer    | null: false       |
-| days_id         | integer    | null: false       |
+| day_id          | integer    | null: false       |
 | price           | integer    | null: false       |
 | user            | references | foreign_key: true |
 
@@ -44,10 +44,10 @@
 | postal_code   | string     | null: false       |
 | from_id       | integer    | null: false       |
 | municipality  | string     | null: false       |
-| address       | string     | null: false       |
+| house_number  | string     | null: false       |
 | building_name | string     |                   |
 | tell          | string     | null: false       |
-| buy_id        | references | foreign_key: true |
+| buy           | references | foreign_key: true |
 
 ### Association
 
