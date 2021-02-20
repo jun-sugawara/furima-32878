@@ -15,9 +15,9 @@ class Item < ApplicationRecord
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_id
-  belongs_to :state_id
-  belongs_to :fee_id
-  belongs_to :from_id
-  belongs_to :day_id
+  belongs_to :category
+  belongs_to :state
+  belongs_to :fee
+  belongs_to :from
+  belongs_to :day
 end
