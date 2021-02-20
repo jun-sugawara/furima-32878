@@ -1,4 +1,4 @@
-class Fee_id = ActiveHash::Base
+class FeeId = ActiveHash::Base
   self.date = [
   { id: 1, name: '--'},
   { id: 2, name: '着払い（購入者負担）'},

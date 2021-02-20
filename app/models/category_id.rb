@@ -1,4 +1,4 @@
-class Category_id = ActiveHash::Base
+class CategoryId = ActiveHash::Base
   self.date = [
   { id: 1, name: '--'},
   { id: 2, name: 'レディース'},
