@@ -1,17 +1,22 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-
+  
   with_options presence: true do
     validates :image
     validates :name
     validates :description
+    validates :price, format: { with:/\A[0-9]+\z/, message: 'Half-width number' },
+                      numericality: {only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999, message: 'Out of setting range'}
+                              
+  end
+
+  with_options numericality: { other_than: 1, message: 'Select' } do
     validates :category_id
     validates :state_id
     validates :fee_id
     validates :from_id
     validates :day_id
-    validates :price, length: { in: 300..9999999 }
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
