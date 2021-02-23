@@ -30,27 +30,27 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが選択されていないと出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it '商品の状態が選択されていないと出品できない' do
         @item.state_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("State Select")
+        expect(@item.errors.full_messages).to include('State Select')
       end
       it '配送料の負担が選択されていないと出品できない' do
         @item.fee_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee Select")
+        expect(@item.errors.full_messages).to include('Fee Select')
       end
       it '発送元の地域が選択されていないと出品できない' do
         @item.from_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("From Select")
+        expect(@item.errors.full_messages).to include('From Select')
       end
       it '発送までの日数が選択されていないと出品できない' do
         @item.day_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day Select")
+        expect(@item.errors.full_messages).to include('Day Select')
       end
       it '販売価格が空では出品できない' do
         @item.price = ''
@@ -60,14 +60,13 @@ RSpec.describe Item, type: :model do
       it '販売価格は半角数字でなければ出品できない' do
         @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it '販売価格¥300~¥9,999,999の範囲でなければ出品できない' do
         @item.price = '10'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
     end
-
   end
 end

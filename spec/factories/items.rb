@@ -10,7 +10,7 @@ FactoryBot.define do
     from_id     { '2' }
     day_id      { '2' }
     price       { '500' }
-    user_id     { ''}
+    user_id     { '' }
 
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/Railsimage.png'), filename: 'Railsimage.png')
