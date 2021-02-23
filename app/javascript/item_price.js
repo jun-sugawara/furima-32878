@@ -4,9 +4,9 @@ function amountCalculation() {
     priceInput.addEventListener("input", () => {
   const inputValue = priceInput.value;
   const addTaxDom = document.getElementById("add-tax-price")
-    addTaxDom.innerHTML = (inputValue * 0.1).toLocaleString()
+    addTaxDom.innerHTML = Math.floor(inputValue * 0.1).toLocaleString()
   const salesProfit = document.getElementById("profit")
-      salesProfit.innerHTML = (inputValue * 0.9).toLocaleString()
+      salesProfit.innerHTML = Math.ceil(inputValue * 0.9).toLocaleString()
   })
 };
 
