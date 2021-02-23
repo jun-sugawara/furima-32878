@@ -25,14 +25,14 @@ RSpec.describe User, type: :model do
       it 'メールアドレスに@が含まれていないと登録ができない' do
         @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Email is invalid"
+        expect(@user.errors.full_messages).to include 'Email is invalid'
       end
       it '使用済みのメールアドレスでは登録ができない' do
         @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include "Email has already been taken"
+        expect(another_user.errors.full_messages).to include 'Email has already been taken'
       end
       it 'パスワードが空では登録ができない' do
         @user.password = ''
@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
       it '名前（全角）は漢字・平仮名・カタカナ以外では登録ができない' do
         @user.first_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name Full-width characters"
+        expect(@user.errors.full_messages).to include 'First name Full-width characters'
       end
       it '苗字（全角）が空では登録ができない' do
         @user.last_name = ''
@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
       it '苗字（全角）は漢字・平仮名・カタカナ以外では登録ができない' do
         @user.last_name = 'tanaka'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name Full-width characters"
+        expect(@user.errors.full_messages).to include 'Last name Full-width characters'
       end
       it '名前（カナ）が空では登録ができない' do
         @user.first_name_kana = ''
