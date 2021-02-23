@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it '販売価格は半角英数字混合では出品できない' do
-        @item.price = '5００'
+        @item.price = 'test5００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Half-width number')
       end
