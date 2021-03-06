@@ -53,6 +53,13 @@ RSpec.describe ItemBuy, type: :model do
         @item_buy.valid?
         expect(@item_buy.errors.full_messages).to include("Postal code can't be blank")
       end
+      it "クレジットカード入力がなければ購入ができない" do
+        @item_buy.token = ''
+        @item_buy.valid?
+        expect(@item_buy.errors.full_messages).to include("Token can't be blank")
+      end
+
+
     end
 
     
