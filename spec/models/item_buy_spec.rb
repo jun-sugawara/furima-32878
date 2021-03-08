@@ -2,12 +2,18 @@ require 'rails_helper'
 
 RSpec.describe ItemBuy, type: :model do
   before do
+    # user = FactoryBot.create(:user)
+    # item = FactoryBot.create(:item)
     @item_buy = FactoryBot.build(:item_buy)
   end
 
   describe '商品購入' do
     context '商品購入がうまくいく時' do
       it '必須項目が全て入力されていれば購入できる' do
+        expect(@item_buy).to be_valid
+      end
+      it '建物名が空でも購入できる' do
+        @item_buy.building_name = ''
         expect(@item_buy).to be_valid
       end
     end
@@ -45,6 +51,11 @@ RSpec.describe ItemBuy, type: :model do
       end
       it '電話番号にはハイフンがあると購入ができない' do
         @item_buy.tell = '090-1111-1111'
+        @item_buy.valid?
+        expect(@item_buy.errors.full_messages).to include('Tell Input only number')
+      end
+      it '電話番号は1２桁以上では購入ができない' do
+        @item_buy.tell = '090123456789'
         @item_buy.valid?
         expect(@item_buy.errors.full_messages).to include('Tell Input only number')
       end
