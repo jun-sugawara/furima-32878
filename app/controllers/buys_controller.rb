@@ -1,4 +1,7 @@
 class BuysController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+
   def index
     @item = Item.find(params[:item_id])
     @item_buy = ItemBuy.new
@@ -23,6 +26,11 @@ class BuysController < ApplicationController
       user_id: current_user.id, item_id: params[:item_id], buy_id: params[:buy_id], token: params[:token]
     )
   end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if (current_user.id == @item.user_id) || @item.buy != nil
+  end  
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
