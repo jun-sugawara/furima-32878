@@ -29,8 +29,8 @@ class BuysController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    redirect_to root_path if (current_user.id == @item.user_id) || @item.buy != nil
-  end  
+    redirect_to root_path if (current_user.id == @item.user_id) || !@item.buy.nil?
+  end
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
