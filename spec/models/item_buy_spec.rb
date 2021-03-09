@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ItemBuy, type: :model do
   before do
-    # user = FactoryBot.create(:user)
-    # item = FactoryBot.create(:item)
-    @item_buy = FactoryBot.build(:item_buy)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @item_buy = FactoryBot.build(:item_buy, user_id: user.id, item_id: item.id)
+    sleep(0.1)
   end
 
   describe '商品購入' do
@@ -54,8 +55,13 @@ RSpec.describe ItemBuy, type: :model do
         @item_buy.valid?
         expect(@item_buy.errors.full_messages).to include('Tell Input only number')
       end
-      it '電話番号は1２桁以上では購入ができない' do
+      it '電話番号は12桁以上では購入ができない' do
         @item_buy.tell = '090123456789'
+        @item_buy.valid?
+        expect(@item_buy.errors.full_messages).to include('Tell Input only number')
+      end
+      it '電話番号は全角数字では購入ができない' do
+        @item_buy.tell = '０８０５１０９６６２３'
         @item_buy.valid?
         expect(@item_buy.errors.full_messages).to include('Tell Input only number')
       end
