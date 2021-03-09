@@ -61,7 +61,12 @@ RSpec.describe ItemBuy, type: :model do
         expect(@item_buy.errors.full_messages).to include('Tell Input only number')
       end
       it '電話番号は全角数字では購入ができない' do
-        @item_buy.tell = '０８０５１０９６６２３'
+        @item_buy.tell = '０９０１２３４５６７８'
+        @item_buy.valid?
+        expect(@item_buy.errors.full_messages).to include('Tell Input only number')
+      end
+      it '電話番号は英数字混合では購入ができない' do
+        @item_buy.tell = '0901234abcd'
         @item_buy.valid?
         expect(@item_buy.errors.full_messages).to include('Tell Input only number')
       end
