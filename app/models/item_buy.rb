@@ -8,7 +8,7 @@ class ItemBuy
     validates :from_id, numericality: { other_than: 1, message: 'Select' }
     validates :municipality
     validates :house_number
-    validates :tell, format: { with: /\A\d{11}\z/, message: 'Input only number' }
+    validates :tell, format: { with: /\A\d{10,11}\z/, message: 'Input only number' }
     validates :user_id
     validates :item_id
   end
